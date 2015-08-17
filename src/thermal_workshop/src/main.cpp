@@ -56,7 +56,7 @@
 
 
 //!!! Basic  !!!
-// 1. Task:    Write a function to subscribe a thermal image
+// 1. Task:    Include a subscriber to adress the thermal image
 // 2. Task:    Display the size of the image you receive
 // 3. Task:    Convert the thermal image to an OpenCV compatible format
 // 4. Task:    Write a function to convert energy data of the thermal camera to temperature in Celsius --> getPixelTemperature
@@ -235,14 +235,17 @@ void thermalImageCallback(const sensor_msgs::Image& image)
 
 int main(int argc, char* argv[])
 {
-   std::string unique_identifier = "my_node";
+   std::string unique_identifier = "chris";
 
    ros::init(argc, argv, unique_identifier + "_thermal_workshop_node");
    ros::NodeHandle nh;
 
    // define here your subscribers
    std::string thermal_topic  = "/optris/thermal_image";
-   ros::Subscriber image_sub  = nh.subscribe(thermal_topic, 1, thermalImageCallback);
+
+   // place here your subscriber
+
+
 
    _binary_pub = nh.advertise<sensor_msgs::Image>(unique_identifier + "/thermal_binary" ,   1);
    _grey_pub   = nh.advertise<sensor_msgs::Image>(unique_identifier + "/thermal_grey"   ,   1);
